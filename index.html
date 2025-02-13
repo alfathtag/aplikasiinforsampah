@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Nilai Ekonomi Sampah dan Penjualan Produk</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 15px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kalkulator Nilai Ekonomi Sampah dan Penjualan Produk Kompos</h1>
+
+        <!-- Pilih jenis sampah -->
+        <label for="jenisSampah">Pilih Jenis Sampah:</label>
+        <select id="jenisSampah">
+            <option value="kompos">Kompos</option>
+        </select>
+
+        <!-- Input berat sampah dalam kg -->
+        <label for="beratSampah">Berat Sampah (kg):</label>
+        <input type="number" id="beratSampah" placeholder="Masukkan berat dalam kg">
+
+        <!-- Harga per kg sudah tetap -->
+        <label for="hargaPerKg">Harga per Kg (Rp):</label>
+        <input type="number" id="hargaPerKg" value="7000" readonly>
+
+        <!-- Tombol Hitung -->
+        <button onclick="hitungNilaiEkonomi()">Hitung Nilai Ekonomi dan Keuntungan</button>
+
+        <!-- Hasil Total Nilai Ekonomi dan Keuntungan -->
+        <div class="result">
+            <h2>Total Nilai Ekonomi:</h2>
+            <p id="hasilEkonomi">Masukkan data untuk melihat hasil</p>
+
+            <h2>Keuntungan:</h2>
+            <p id="hasilKeuntungan">Masukkan data untuk melihat hasil</p>
+        </div>
+
+        <!-- Produk Kompos yang Dijual -->
+        <h2>Beli produk kompos hasil daur ulang:</h2>
+        <p>Beli produk Kompos daur ulang (Rp 50.000 per karung):</p>
+        <button onclick="window.location.href='https://wa.me/082149556875'">Beli via WhatsApp</button>
+    </div>
+
+    <script>
+        function hitungNilaiEkonomi() {
+            var berat = document.getElementById('beratSampah').value;
+            var harga = 7000; // Harga tetap Rp 7.000 per kg
+            var hasil = berat * harga;
+
+            var modalPerKg = 5000; // Modal per kg
+            var keuntungan = hasil - (berat * modalPerKg);
+
+            if (berat) {
+                document.getElementById('hasilEkonomi').innerText = 'Rp ' + hasil.toLocaleString();
+                document.getElementById('hasilKeuntungan').innerText = 'Rp ' + keuntungan.toLocaleString();
+            } else {
+                document.getElementById('hasilEkonomi').innerText = 'Masukkan data yang benar.';
+                document.getElementById('hasilKeuntungan').innerText = 'Masukkan data yang benar.';
+            }
+        }
+    </script>
+</body>
+</html>
